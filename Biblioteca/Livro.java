@@ -1,5 +1,8 @@
 package Biblioteca;
 
+/**
+ * Classe que representa um livro
+ */
 public class Livro {
 
 	private int idLivro;
@@ -8,7 +11,14 @@ public class Livro {
 	private float preco;
 	private Disponibilidade dispLivro;
 
-	// construtor
+	/**
+	 * Construtor da classe Livro
+	 * 
+	 * @param idLivro Identificador único do livro
+	 * @param titulo  Título do livro
+	 * @param autor   Autor do livro
+	 * @param preco   Preço do livro
+	 */
 	public Livro(int idLivro, String titulo, String autor, float preco) {
 		super();
 		this.idLivro = idLivro;
@@ -17,9 +27,6 @@ public class Livro {
 		this.preco = preco;
 		this.dispLivro = Disponibilidade.DISPONIVEL;
 	}
-
-	// métodos getters, setters, toString, compareTo etc conforme a
-	// modelagem e encapsulamento especificados mais o que equipe decidir implementa
 
 	public int getIdLivro() {
 		return idLivro;

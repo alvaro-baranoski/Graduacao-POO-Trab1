@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import Amigo.Amigo;
 import Biblioteca.Livro;
 
+/**
+ * Classe que representa um empréstimo
+ */
 public class Emprestimo {
 
 	private int idEmprestimo;
@@ -15,6 +18,14 @@ public class Emprestimo {
 	private Livro livro;
 	private Amigo amigo;
 
+	/**
+	 * Construtor da classe Emprestimo
+	 * 
+	 * @param idEmprestimo   identificador único de empréstimo
+	 * @param dataEmprestimo data do empréstimo
+	 * @param livro          livro emprestado
+	 * @param amigo          amigo que emprestou
+	 */
 	public Emprestimo(int idEmprestimo, LocalDate dataEmprestimo, Livro livro, Amigo amigo) {
 		super();
 		this.idEmprestimo = idEmprestimo;

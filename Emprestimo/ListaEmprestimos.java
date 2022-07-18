@@ -7,6 +7,9 @@ import Amigo.Amigo;
 import Biblioteca.Disponibilidade;
 import Biblioteca.Livro;
 
+/**
+ * Classe que contém uma lista de empréstimos
+ */
 public class ListaEmprestimos {
 
 	private ArrayList<Emprestimo> alEmprestimos;
@@ -16,6 +19,12 @@ public class ListaEmprestimos {
 		this.alEmprestimos = new ArrayList<Emprestimo>();
 	}
 
+	/**
+	 * Adiciona um novo empréstimo
+	 * 
+	 * @param livro livro que foi emprestado
+	 * @param amigo amigo que emprestou o livro
+	 */
 	public void addEmprestimo(Livro livro, Amigo amigo) {
 		int idEmprestimo = alEmprestimos.size();
 		Emprestimo emprestimo = new Emprestimo(idEmprestimo, LocalDate.now(), livro, amigo);
@@ -23,6 +32,9 @@ public class ListaEmprestimos {
 		this.alEmprestimos.add(emprestimo);
 	}
 
+	/**
+	 * Realiza o print dos empréstimos atuais
+	 */
 	public void printEmprestimosAtuais() {
 		for (int i = 0; i < alEmprestimos.size(); i++) {
 			var emprestimo = alEmprestimos.get(i);
@@ -31,15 +43,23 @@ public class ListaEmprestimos {
 		}
 	}
 
+	/**
+	 * Realiza o print dos livros emprestados junto com o id do empréstimo
+	 */
 	public void printLivrosEmprestados() {
 		for (int i = 0; i < alEmprestimos.size(); i++) {
 			var emprestimo = alEmprestimos.get(i);
 			var livro = emprestimo.getLivro();
-			if (livro.getDispLivro() == Disponibilidade.EMPRESTADO)
+			if (emprestimo.getDataDevolucao() == null)
 				System.out.println(emprestimo.getIdEmprestimo() + " | " + livro.getTitulo());
 		}
 	}
 
+	/**
+	 * Realiza o print de histórico de empréstimos de um livro
+	 * 
+	 * @param idLivro id do lívro para consultar empréstimo
+	 */
 	public void printHistoricoEmpresimos(int idLivro) {
 		for (int i = 0; i < alEmprestimos.size(); i++) {
 			var emprestimo = alEmprestimos.get(i);
@@ -49,6 +69,11 @@ public class ListaEmprestimos {
 		}
 	}
 
+	/**
+	 * Realiza a devolução de um livro
+	 * 
+	 * @param idEmprestimo identificador do empréstimo
+	 */
 	public void devolver(int idEmprestimo) {
 		var emprestimo = alEmprestimos.get(idEmprestimo);
 		emprestimo.setDataDevolucao(LocalDate.now());

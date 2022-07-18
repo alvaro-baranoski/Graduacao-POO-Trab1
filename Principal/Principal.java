@@ -6,6 +6,9 @@ import Emprestimo.*;
 import Amigo.*;
 import Biblioteca.*;
 
+/**
+ * Classe que contém o método main da aplicação
+ */
 public class Principal {
 
 	private static Biblioteca bib = new Biblioteca("Biblioteca Pessoal");
@@ -70,6 +73,11 @@ public class Principal {
 		}
 	}
 
+	/**
+	 * Menu principal da aplicação
+	 * 
+	 * @return o índice da ação desejada
+	 */
 	private static int MenuPrincipal() {
 		System.out.println("MENU PRINCIPAL");
 		System.out.println("0 - sair");
@@ -84,6 +92,9 @@ public class Principal {
 		return Integer.parseInt(scanner.nextLine());
 	}
 
+	/**
+	 * Realiza o cadastro de um novo livro
+	 */
 	private static void cadastrarLivro() {
 		System.out.print("Digite o título do livro: ");
 		String titulo = scanner.nextLine();
@@ -97,6 +108,9 @@ public class Principal {
 		bib.addLivro(titulo, autor, preco);
 	}
 
+	/**
+	 * Cadastra um novo amigo
+	 */
 	private static void cadastrarAmigo() {
 		System.out.println("Digite o nome do amigo: ");
 		String nome = scanner.nextLine();
@@ -107,6 +121,9 @@ public class Principal {
 		amigos.addAmigo(nome, celular);
 	}
 
+	/**
+	 * Realiza o empréstimo de um livro a um amigo
+	 */
 	private static void emprestar() {
 		System.out.println("Código do livro a ser emprestado: ");
 		bib.listaLivroParaEmprestimo();
@@ -121,6 +138,9 @@ public class Principal {
 		emprestimos.addEmprestimo(livro, amigo);
 	}
 
+	/**
+	 * Realiza a devolução de um livro
+	 */
 	private static void devolver() {
 		System.out.println("Código do livro a ser devolvido: ");
 		emprestimos.printLivrosEmprestados();
@@ -128,6 +148,9 @@ public class Principal {
 		emprestimos.devolver(idEmprestimo);
 	}
 
+	/**
+	 * Realiza o print do histórico de empréstimos
+	 */
 	private static void printHistoricoEmpresimos() {
 		System.out.println("Informe o id do livro: ");
 		bib.listarBiblioteca(false);
@@ -135,6 +158,9 @@ public class Principal {
 		emprestimos.printHistoricoEmpresimos(idLivro);
 	}
 
+	/**
+	 * Realiza a alteração de estado de um livro
+	 */
 	private static void alterarEstado() {
 		System.out.println("Informe o id do livro: ");
 		bib.listarBiblioteca(false);

@@ -4,23 +4,33 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Classe que contém uma biblioteca com diversos livros
+ */
 public class Biblioteca {
 
 	private String nome;
 	private ArrayList<Livro> alLivros;
 	private float investimento;
 
-	// construtor cria alLivros, ArrayList que fica encapsulado na classe Biblioteca
+	/**
+	 * Construtor da classe Biblioteca
+	 * 
+	 * @param nome nome da biblioteca
+	 */
 	public Biblioteca(String nome) {
 		this.nome = nome;
 		this.alLivros = new ArrayList<Livro>();
 		investimento = 0;
 	}
 
-	// demais métodos getters, setters, toString, compareTo (para ordenação) etc
-	// conforme a modelagem e encapsulamento especificados
-	// mais o que estudante decidir implementar
-
+	/**
+	 * Adiciona um livro em alLivros
+	 * 
+	 * @param titulo título do livro
+	 * @param autor  autor do livro
+	 * @param preco  preço do livro
+	 */
 	public void addLivro(String titulo, String autor, float preco) {
 		int idLivro = alLivros.size();
 		Livro livro = new Livro(idLivro, titulo, autor, preco);
@@ -28,6 +38,11 @@ public class Biblioteca {
 		this.investimento += preco;
 	}
 
+	/**
+	 * Lista todos os livros presentes na biblioteca
+	 * 
+	 * @param showBib flag que indica se irá mostrar o cabeçalho da lista
+	 */
 	public void listarBiblioteca(Boolean showBib) {
 		if (showBib) {
 			System.out.println("BIBLIOTECA: " + this.nome);
@@ -44,6 +59,11 @@ public class Biblioteca {
 		}
 	}
 
+	/**
+	 * Realiza o sort alfabético ascendente baseado em título de livros
+	 * 
+	 * @param array arrayList de entrada
+	 */
 	private void sortBiblioteca(ArrayList<Livro> array) {
 		Collections.sort(array, new Comparator<Livro>() {
 			public int compare(Livro l1, Livro l2) {
@@ -52,6 +72,9 @@ public class Biblioteca {
 		});
 	}
 
+	/**
+	 * Printa todos os lívros que estão diposíveis para emprestimo
+	 */
 	public void listaLivroParaEmprestimo() {
 		ArrayList<Livro> alLivrosCopia = new ArrayList<Livro>(alLivros);
 		sortBiblioteca(alLivrosCopia);
@@ -63,6 +86,12 @@ public class Biblioteca {
 		}
 	}
 
+	/**
+	 * Realiza a alteração de estado de um livro
+	 * 
+	 * @param idLivro identificador do livro
+	 * @param idDisp  identificador do estado
+	 */
 	public void alterarEstado(int idLivro, int idDisp) {
 		Livro livro = alLivros.get(idLivro);
 		switch (idDisp) {
@@ -70,7 +99,7 @@ public class Biblioteca {
 				if (livro.getDispLivro() != Disponibilidade.EMPRESTADO) {
 					livro.setDispLivro(Disponibilidade.CONSULTALOCAL);
 				} else {
-					System.out.println("NÃO É POSSÍVEL ALTERAR DE EMPRESTADO PARA CONSULTA LOCAL");
+					System.out.println("NAO E POSSIVEL ALTERAR DE EMPRESTADO PARA CONSULTA LOCAL");
 				}
 				break;
 			case 1:
